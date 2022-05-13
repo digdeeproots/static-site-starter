@@ -39,19 +39,19 @@ A simple way to get started is to use this project as a template, which gives yo
 git clone --depth 1 https://github.com/me/example.git
 ```
 
-You can now edit your own versions of the site’s source files.
-
-If you want to do SCSS edits and want to publish these, you need to install `PostCSS`
+4. Install all dependencies, including Hugo:
 
 ```bash
 npm install
 ```
 
-## Running the website locally
+5. (optional) Install gh cli so that `npm run check` will output the latest released Hugo version after it outputs your current installed version.
 
-Building and running the site locally requires a recent `extended` version of [Hugo](https://gohugo.io).
-You can find out more about how to install Hugo for your environment in our
-[Getting started](https://www.docsy.dev/docs/getting-started/#prerequisites-and-installation) guide.
+You can now edit your own versions of the site’s source files.
+
+To update the installed Hugo version, change `package.json`'s `otherDependencies.hugo` value to the desired version, then run `npm install`.
+
+## Running the website locally
 
 Once you've made your working copy of the site repo, from the repo root folder, run:
 
@@ -115,7 +115,6 @@ Error: Error building site: TOCSS: failed to transform "scss/main.scss" (text/x-
 ```
 
 This error occurs if you have not installed the extended version of Hugo.
-See this [section](https://www.docsy.dev/docs/get-started/docsy-as-module/installation-prerequisites/#install-hugo) of the user guide for instructions on how to install Hugo.
 
 Or you may encounter the following error:
 
