@@ -9,8 +9,8 @@
   <script src="https://identity-js.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-	{{- $cms := resources.Get "cms/index.js" | babel | fingerprint -}}
-  <script type="module" src="{{ $cms.Permalink }}" integrity="{{ $cms.Data.Integrity }}"></script>
+	{{- $cms := resources.Get "cms/index.js" | js.Build | minify | fingerprint -}}
+  <script type="module" src="{{ $cms.Permalink }}" integrity="{{ $cms.Data.Integrity }}" defer></script>
 	{{ block "main" . }}{{ end }}
 </body>
 </html>
