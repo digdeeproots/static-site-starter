@@ -34,6 +34,7 @@
 	},
 	"homepage": "https://github.com/google/docsy-example#readme",
 	"devDependencies": {
+		"@babel/cli": "^7.17.10",
 		"@babel/core": "^7.17.10",
 		"@babel/plugin-proposal-object-rest-spread": "^7.17.3",
 		"@babel/plugin-syntax-object-rest-spread": "^7.8.3",
