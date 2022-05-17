@@ -10,7 +10,7 @@
 </head>
 <body>
 	{{- $cms := resources.Get "cms/index.js" | babel | fingerprint -}}
-  <script src="{{ $cms.Permalink }}" integrity="{{ $cms.Data.Integrity }}"></script>
+  <script type="module" src="{{ $cms.Permalink }}" integrity="{{ $cms.Data.Integrity }}"></script>
 	{{ block "main" . }}{{ end }}
 </body>
 </html>
