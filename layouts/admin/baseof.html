@@ -10,10 +10,10 @@
 	<link href="{{ $css.RelPermalink }}" rel="stylesheet" integrity="{{ $css.Data.Integrity }}" />
 	{{- $identity := resources.GetRemote "https://identity-js.netlify.com/v1/netlify-identity-widget.js" | minify | fingerprint -}}
   <script type="module" src="{{ $identity.RelPermalink }}" integrity="{{ $identity.Data.Integrity }}" defer></script>
+	{{- $cms := resources.Get "cms/index.js" | js.Build | fingerprint -}}
+  <script type="module" src="{{ $cms.RelPermalink }}" integrity="{{ $cms.Data.Integrity }}" defer></script>
 </head>
 <body>
-	{{- $cms := resources.Get "cms/index.js" | js.Build | minify | fingerprint -}}
-  <script type="module" src="{{ $cms.Permalink }}" integrity="{{ $cms.Data.Integrity }}" defer></script>
 	{{ block "main" . }}{{ end }}
 </body>
 </html>
