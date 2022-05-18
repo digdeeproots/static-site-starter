@@ -1,5 +1,5 @@
 +++
-title = "Goldydocs"
-linkTitle = "Goldydocs"
+title = "Edit the site"
+linkTitle = "Edit the site"
 
 +++
