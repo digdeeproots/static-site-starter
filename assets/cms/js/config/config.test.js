@@ -31,7 +31,8 @@ function basicPage(label, name, file) {
 function verify(conf) {
 	return {
 		hasCollection: (collection) => {
-			expect(conf.collections).toContainEqual(expect.objectContaining(collection));
+			expect(conf.collections).toContainEqual(
+				expect.objectContaining(collection));
 		}
 	}
 }
