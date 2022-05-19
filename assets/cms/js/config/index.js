@@ -1,6 +1,7 @@
 // Import the configuration of each collection from cms/config/collections
 // import blogPostsCollection from "./collections/blog-posts";
 import pagesCollection from "./collections/pages";
+import articlesCollection from "./collections/articles";
 // import pressReleasesCollection from "./collections/press-releases";
 // import servicesCollection from "./collections/services";
 // import siteConfigurationCollection from "./collections/site-configuration";
@@ -26,6 +27,7 @@ const config = {
   public_folder: "/img",
   collections: [
     pagesCollection,
+		articlesCollection,
     // servicesCollection,
     // blogPostsCollection,
     // commonPageSectionsCollection,

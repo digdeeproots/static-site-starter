@@ -1,5 +1,5 @@
 import config from ".";
-import { pageDefaults, filesCollection } from "./patterns";
+import { pageDefaults, filesCollection, folderCollection } from "./patterns";
 
 test('config exists', () => {
   expect(config).toBeDefined();
@@ -43,6 +43,11 @@ describe('configuring CMS collections', () => {
 			filesCollection('Pages', [
 				basicPage('Home page', 'home', 'content/en/_index.md'),
 			])
+		);
+	});
+	test('articles', () => {
+		verify(config).hasCollection(
+			folderCollection('Articles', 'articles')
 		);
 	});
 });

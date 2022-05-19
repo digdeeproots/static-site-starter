@@ -15,7 +15,7 @@ export const filesCollection = (label, files) => ({
 
 export const folderCollection = (label, folder) => ({
   ...collectionDefaults(label, label.toLowerCase()),
-  folder,
+  folder: `content/en/${folder}`,
 });
 
 export const pageDefaults = [
