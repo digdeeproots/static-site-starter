@@ -1,5 +1,5 @@
 import config from ".";
-import { pageDefaults, filesCollection, folderCollection } from "./patterns";
+import { github, pageDefaults, filesCollection, folderCollection, gitgateway, with_editorial_workflow } from "./patterns";
 
 test('config exists', () => {
   expect(config).toBeDefined();
@@ -8,15 +8,50 @@ test('config exists', () => {
 test('config defines editorial workflow', () => {
   expect(config).toEqual(expect.objectContaining({
 		backend: {
-			name: 'git-gateway',
 			branch: expect.anything(),
-			cms_label_prefix: expect.stringMatching(/^content\//)
+			cms_label_prefix: expect.stringMatching(/^content\//),
+			name: "github",
+			repo: 'digdeeproots/static-site-starter',
+			open_authoring: true,
+			auth_scope: 'repo',
 		},
 		load_config_file: false,
 		publish_mode: 'editorial_workflow',
 		media_folder: 'static/img',
 		public_folder: '/img'
 	}));
+});
+
+describe('generate config for recurring patterns', () => {
+	test('github backend basic values', () => {
+		expect(github('the/repo', 'some/branch')).toEqual(
+			expect.objectContaining({
+				name: 'github',
+				repo: 'the/repo',
+				branch: 'some/branch',
+				cms_label_prefix: 'content/editorial/',
+			})
+		);
+	});
+
+	test('git gateway backend basic values', () => {
+		expect(gitgateway('some/branch')).toEqual(
+			expect.objectContaining({
+				name: 'git-gateway',
+				branch: 'some/branch',
+				cms_label_prefix: 'content/editorial/',
+			})
+		);
+	});
+
+	test('additional values for open authoring', () => {
+		expect(with_editorial_workflow()).toEqual(
+			expect.objectContaining({
+				open_authoring: true,
+				auth_scope: 'repo',
+			})
+		);
+	});
 });
 
 function basicPage(label, name, file) {
