@@ -12,4 +12,12 @@ CMS.registerPreviewTemplate("post", PostPreview);
 CMS.registerPreviewTemplate("products", ProductsPreview);
 CMS.registerPreviewTemplate("values", ValuesPreview);
 CMS.registerPreviewTemplate("contact", ContactPreview);
-CMS.init();
+
+// import myCustomEditorComponent from "./editor-components";
+// CMS.registerEditorComponent(myCustomEditorComponent);
+
+import config from "./config";
+
+window.CMS_MANUAL_INIT = true;
+window.CMS_CONFIGURATION = config;
+CMS.init({ config });
