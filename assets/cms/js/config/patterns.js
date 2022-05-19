@@ -8,6 +8,16 @@ export const collectionDefaults = (label, name) => ({
   },
 });
 
+export const filesCollection = (label, files) => ({
+  ...collectionDefaults(label, label.toLowerCase()),
+  files,
+});
+
+export const folderCollection = (label, folder) => ({
+  ...collectionDefaults(label, label.toLowerCase()),
+  folder,
+});
+
 export const pageDefaults = [
   stringField("Menu title", "title", true),
   hiddenField("Menu", "menu"),

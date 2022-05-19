@@ -1,4 +1,5 @@
 import config from ".";
+import { pageDefaults, filesCollection } from "./patterns";
 
 test('config exists', () => {
   expect(config).toBeDefined();
@@ -16,4 +17,31 @@ test('config defines editorial workflow', () => {
 		media_folder: 'static/img',
 		public_folder: '/img'
 	}));
+});
+
+function basicPage(label, name, file) {
+	return expect.objectContaining({
+		label,
+		name,
+		file,
+		fields: expect.arrayContaining(pageDefaults),
+	});
+}
+
+function verify(conf) {
+	return {
+		hasCollection: (collection) => {
+			expect(conf.collections).toContainEqual(expect.objectContaining(collection));
+		}
+	}
+}
+
+describe('configuring CMS collections', () => {
+	test('basic pages', () => {
+		verify(config).hasCollection(
+			filesCollection('Pages', [
+				basicPage('Home page', 'home', 'content/en/_index.md'),
+			])
+		);
+	});
 });
