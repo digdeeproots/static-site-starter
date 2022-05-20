@@ -8,8 +8,6 @@
 
 	{{- $css := resources.Get "cms/css/main.css" | postCSS (dict "inlineImports" true) | minify | fingerprint -}}
 	<link href="{{ $css.RelPermalink }}" rel="stylesheet" integrity="{{ $css.Data.Integrity }}" />
-	{{- $identity := resources.GetRemote "https://identity-js.netlify.com/v1/netlify-identity-widget.js" | minify | fingerprint -}}
-  <script type="module" src="{{ $identity.RelPermalink }}" integrity="{{ $identity.Data.Integrity }}" defer></script>
 	{{- $cms := resources.Get "cms/index.js" | js.Build | fingerprint -}}
   <script type="module" src="{{ $cms.RelPermalink }}" integrity="{{ $cms.Data.Integrity }}" defer></script>
 </head>
