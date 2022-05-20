@@ -34,6 +34,10 @@ export const filesCollection = (label, files) => ({
 export const folderCollection = (label, folder) => ({
   ...collectionDefaults(label, label.toLowerCase()),
   folder: `content/en/${folder}`,
+	create: true,
+	fields: [
+		{label: "Title", name: "title", widget: "string"},
+	],
 });
 
 export const pageDefaults = [

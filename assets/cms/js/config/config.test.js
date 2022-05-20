@@ -52,6 +52,23 @@ describe('generate config for recurring patterns', () => {
 			})
 		);
 	});
+
+	test('folder collection contains required values', () => {
+		expect(folderCollection('Label', 'path/subpath')).toEqual(
+			expect.objectContaining({
+				label: 'Label',
+				name: 'label',
+				editor: {
+					preview: false,
+				},
+				folder: `content/en/path/subpath`,
+				create: true,
+				fields: [
+					{label: "Title", name: "title", widget: "string"},
+				],
+			})
+		);
+	});
 });
 
 function basicPage(label, name, file) {
