@@ -6,9 +6,9 @@
 
   <title>Content Manager</title>
 
-	{{- $css := resources.Get "cms/css/main.css" | postCSS (dict "inlineImports" true) | minify | fingerprint -}}
+	{{- $css := (slice (resources.Get "cms/css/main.css" | postCSS (dict "inlineImports" true "noMap" true))) | resources.Concat "css/cms.css" | minify | fingerprint -}}
 	<link href="{{ $css.RelPermalink }}" rel="stylesheet" integrity="{{ $css.Data.Integrity }}" />
-	{{- $cms := resources.Get "cms/index.js" | js.Build | fingerprint -}}
+	{{- $cms := resources.Get "cms/index.js" | js.Build (dict "targetPath" "js/cms.js" "sourceMap" "external" "minify" true) | fingerprint -}}
   <script type="module" src="{{ $cms.RelPermalink }}" integrity="{{ $cms.Data.Integrity }}" defer></script>
 </head>
 <body>

@@ -1,4 +1,5 @@
 import config from ".";
+import { textField } from './fields'
 import { github, pageDefaults, filesCollection, folderCollection, gitgateway, with_editorial_workflow } from "./patterns";
 
 test('config exists', () => {
@@ -71,12 +72,12 @@ describe('generate config for recurring patterns', () => {
 	});
 });
 
-function basicPage(label, name, file) {
+function basicPage(label, name, file, extra_fields = []) {
 	return expect.objectContaining({
 		label,
 		name,
 		file,
-		fields: expect.arrayContaining(pageDefaults),
+		fields: expect.arrayContaining([...pageDefaults, ...extra_fields]),
 	});
 }
 
@@ -93,7 +94,7 @@ describe('configuring CMS collections', () => {
 	test('basic pages', () => {
 		verify(config).hasCollection(
 			filesCollection('Pages', [
-				basicPage('Home page', 'home', 'content/en/_index.md'),
+				basicPage('Home page', 'home', 'content/en/_index.html', [textField("Body", "body")]),
 			])
 		);
 	});

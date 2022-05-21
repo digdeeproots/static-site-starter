@@ -1,12 +1,14 @@
+import { textField } from "../../fields";
 import {
-  pageDefaults,
+	pageDefaults,
 } from "../../patterns";
 
 export default {
-  label: "Home page",
-  name: "home",
-  file: "content/en/_index.md",
-  fields: [
-    ...pageDefaults,
-  ],
+	label: "Home page",
+	name: "home",
+	file: "content/en/_index.html",
+	fields: [
+		...pageDefaults,
+		textField('Body', 'body'),
+	],
 };

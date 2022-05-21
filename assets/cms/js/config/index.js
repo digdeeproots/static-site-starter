@@ -4,7 +4,7 @@ import { github, with_editorial_workflow } from "./patterns";
 
 const config = {
   backend: {
-		...github('digdeeproots/static-site-starter'),
+		...github('digdeeproots/static-site-starter', 'main'),
 		...with_editorial_workflow(),
   },
   load_config_file: false,
