@@ -1,6 +1,6 @@
 import config from ".";
 import { textField } from './fields'
-import { github, pageDefaults, filesCollection, folderCollection, gitgateway, with_editorial_workflow } from "./patterns";
+import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow } from "./patterns";
 
 test('config exists', () => {
   expect(config).toBeDefined();
@@ -70,6 +70,26 @@ describe('generate config for recurring patterns', () => {
 			})
 		);
 	});
+
+	test('nested folder collection contains required values', () => {
+		expect(nestedFolderCollection('Label', 'path/subpath')).toEqual(
+			expect.objectContaining({
+				label: 'Label',
+				name: 'label',
+				editor: {
+					preview: false,
+				},
+				folder: `content/en/path/subpath`,
+				nested: {
+					depth: 30,
+				},
+				create: true,
+				fields: [
+					{label: "Title", name: "title", widget: "string"},
+				],
+			})
+		);
+	});
 });
 
 function basicPage(label, name, file, extra_fields = []) {
@@ -100,7 +120,7 @@ describe('configuring CMS collections', () => {
 	});
 	test('articles', () => {
 		verify(config).hasCollection(
-			folderCollection('Articles', 'articles')
+			nestedFolderCollection('Article', 'article')
 		);
 	});
 });

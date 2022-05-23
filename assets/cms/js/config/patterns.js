@@ -40,6 +40,13 @@ export const folderCollection = (label, folder) => ({
 	],
 });
 
+export const nestedFolderCollection = (label, folder) => ({
+  ...folderCollection(label, folder),
+	nested: {
+		depth: 30,
+	},
+});
+
 export const pageDefaults = [
   stringField("Menu title", "title", true),
   stringField("Link title", "linkTitle", true),
