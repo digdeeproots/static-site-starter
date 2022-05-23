@@ -31,17 +31,20 @@ export const filesCollection = (label, files) => ({
   files,
 });
 
-export const folderCollection = (label, folder) => ({
-  ...collectionDefaults(label, label.toLowerCase()),
-  folder: `content/en/${folder}`,
-	create: true,
-	fields: [
-		{label: "Title", name: "title", widget: "string"},
-	],
-});
+export const folderCollection = (label, folder, extra_fields=[]) => {
+	if(!extra_fields.find(f => f.name === 'title')) {
+		extra_fields = [...extra_fields, {label: "Title", name: "title", widget: "string"}]
+	}
+	return {
+		...collectionDefaults(label, label.toLowerCase()),
+		folder: `content/en/${folder}`,
+		create: true,
+		fields: extra_fields,
+	};
+}
 
-export const nestedFolderCollection = (label, folder) => ({
-  ...folderCollection(label, folder),
+export const nestedFolderCollection = (label, folder, extra_fields=[]) => ({
+  ...folderCollection(label, folder, extra_fields),
 	nested: {
 		depth: 30,
 	},

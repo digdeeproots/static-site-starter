@@ -1,5 +1,5 @@
 import config from ".";
-import { textField } from './fields'
+import { markdownField, textField } from './fields'
 import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow } from "./patterns";
 
 test('config exists', () => {
@@ -118,9 +118,13 @@ describe('configuring CMS collections', () => {
 			])
 		);
 	});
+
 	test('articles', () => {
 		verify(config).hasCollection(
-			nestedFolderCollection('Article', 'article')
+			nestedFolderCollection('Article', 'article', [
+				...pageDefaults,
+				markdownField('Body', 'body'),
+			])
 		);
 	});
 });

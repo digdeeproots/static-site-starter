@@ -1,7 +1,8 @@
-import { nestedFolderCollection } from "../../patterns";
+import { markdownField } from "../../fields";
+import { nestedFolderCollection, pageDefaults } from "../../patterns";
 
 const articlesCollection = {
-  ...nestedFolderCollection("Article", 'article'),
+  ...nestedFolderCollection("Article", 'article', [...pageDefaults, markdownField('Body', 'body')]),
 };
 
 export default articlesCollection;
