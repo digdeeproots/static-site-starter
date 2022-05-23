@@ -1,7 +1,7 @@
-import { folderCollection } from "../../patterns";
+import { nestedFolderCollection } from "../../patterns";
 
 const articlesCollection = {
-  ...folderCollection("Articles", 'articles'),
+  ...nestedFolderCollection("Article", 'article'),
 };
 
 export default articlesCollection;
