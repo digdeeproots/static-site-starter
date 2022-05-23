@@ -6,10 +6,8 @@ import PostPreview from "./cms-preview-templates/post";
 import ValuesPreview from "./cms-preview-templates/values";
 import ContactPreview from "./cms-preview-templates/contact";
 
-CMS.registerPreviewTemplate("home", HomePreview);
-CMS.registerPreviewTemplate("post", PostPreview);
-CMS.registerPreviewTemplate("values", ValuesPreview);
-CMS.registerPreviewTemplate("contact", ContactPreview);
+// CMS.registerPreviewTemplate("home", HomePreview);
+// CMS.registerPreviewTemplate("article", PostPreview);
 
 // import myCustomEditorComponent from "./editor-components";
 // CMS.registerEditorComponent(myCustomEditorComponent);
