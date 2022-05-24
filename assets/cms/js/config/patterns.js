@@ -55,12 +55,13 @@ export const nestedFolderCollection = (plural_label, label, folder, extra_fields
 });
 
 export const pageDefaults = [
-  stringField("Menu title", "title", true),
-  stringField("Link title", "linkTitle", true),
-  objectField("SEO", "seo", [
-    stringField("SEO title", "title"),
-    textField("SEO description", "description"),
-  ]),
+	stringField('Default title, also used in links to the page', 'title', true),
+	stringField('Title used in menus', 'menu_title', true),
+	stringField('Slug used in URLs', 'slug', true),
+	objectField("SEO", "seo", [
+		stringField('Title used in search engine results', 'title'),
+		textField("SEO description", "description"),
+	]),
 ];
 
 export const buttonDefaults = (label = "Button", name = "button") =>

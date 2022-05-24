@@ -57,10 +57,11 @@ describe('generate config for recurring patterns', () => {
 	test('default per-page content fields are correct', () => {
 		expect(pageDefaults).toEqual(
 			expect.arrayContaining([
-				stringField('Menu title', 'title', true),
-				stringField('Link title', 'linkTitle', true),
+				stringField('Default title, also used in links to the page', 'title', true),
+				stringField('Title used in menus', 'menu_title', true),
+				stringField('Slug used in URLs', 'slug', true),
 				objectField('SEO', 'seo', [
-					stringField('SEO title', 'title', false),
+					stringField('Title used in search engine results', 'title', false),
 					textField('SEO description', 'description', false),
 				], true),
 			])
