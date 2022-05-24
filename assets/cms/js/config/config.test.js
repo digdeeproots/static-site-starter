@@ -117,14 +117,14 @@ describe('configuring CMS collections', () => {
 	test('basic pages', () => {
 		verify(config).hasCollection(
 			filesCollection('Pages', [
-				basicPage('Home page', 'home', 'content/en/_index.html', [textField("Body", "body")]),
+				basicPage('Home page', 'home', 'content/en/_index.html', [textField("Body", "body", true)]),
 			])
 		);
 	});
 
 	test('articles', () => {
 		verify(config).hasCollection(
-			nestedFolderCollection('Article', 'article', [
+			nestedFolderCollection('Articles', 'Article', 'articles', [
 				...pageDefaults,
 				markdownField('Body', 'body'),
 			])
