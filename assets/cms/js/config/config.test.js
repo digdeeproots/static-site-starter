@@ -1,5 +1,5 @@
 import config from ".";
-import { markdownField, textField } from './fields'
+import { markdownField, objectField, stringField, textField } from './fields'
 import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow } from "./patterns";
 
 test('config exists', () => {
@@ -51,6 +51,19 @@ describe('generate config for recurring patterns', () => {
 				open_authoring: true,
 				auth_scope: 'repo',
 			})
+		);
+	});
+
+	test('default per-page content fields are correct', () => {
+		expect(pageDefaults).toEqual(
+			expect.arrayContaining([
+				stringField('Menu title', 'title', true),
+				stringField('Link title', 'linkTitle', true),
+				objectField('SEO', 'seo', [
+					stringField('SEO title', 'title', false),
+					textField('SEO description', 'description', false),
+				], true),
+			])
 		);
 	});
 
