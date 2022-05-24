@@ -54,39 +54,39 @@ describe('generate config for recurring patterns', () => {
 		);
 	});
 
+	const basic_folder_collection = (plural_label, singular_label, folder) =>
+		expect.objectContaining({
+			label: plural_label,
+			label_singular: singular_label,
+			name: singular_label.toLowerCase(),
+			editor: {
+				preview: false,
+			},
+			folder: `content/en/${folder}`,
+			create: true,
+			fields: [
+				{label: "Title", name: "title", widget: "string"},
+			],
+		});
+
 	test('folder collection contains required values', () => {
-		expect(folderCollection('Label', 'path/subpath')).toEqual(
-			expect.objectContaining({
-				label: 'Label',
-				name: 'label',
-				editor: {
-					preview: false,
-				},
-				folder: `content/en/path/subpath`,
-				create: true,
-				fields: [
-					{label: "Title", name: "title", widget: "string"},
-				],
-			})
+		expect(folderCollection('Labels', 'Label', 'path/subpath')).toEqual(
+			basic_folder_collection('Labels', 'Label', 'path/subpath')
+		);
+	});
+
+	test('nested folder collection contains same basic values as any other folder collection', () => {
+		expect(nestedFolderCollection('Labels', 'Label', 'path/subpath')).toEqual(
+			basic_folder_collection('Labels', 'Label', 'path/subpath')
 		);
 	});
 
 	test('nested folder collection contains required values', () => {
-		expect(nestedFolderCollection('Label', 'path/subpath')).toEqual(
+		expect(nestedFolderCollection('Labels', 'Label', 'path/subpath')).toEqual(
 			expect.objectContaining({
-				label: 'Label',
-				name: 'label',
-				editor: {
-					preview: false,
-				},
-				folder: `content/en/path/subpath`,
 				nested: {
 					depth: 30,
 				},
-				create: true,
-				fields: [
-					{label: "Title", name: "title", widget: "string"},
-				],
 			})
 		);
 	});
