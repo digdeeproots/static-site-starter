@@ -9,6 +9,6 @@ export default {
 	file: "content/en/_index.html",
 	fields: [
 		...pageDefaults,
-		textField('Body', 'body'),
+		textField('Body', 'body', true),
 	],
 };
