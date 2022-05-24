@@ -78,8 +78,10 @@ describe('generate config for recurring patterns', () => {
 			},
 			folder: `content/en/${folder}`,
 			create: true,
+			slug: '{{fields.slug}}',
 			fields: [
-				{label: "Title", name: "title", widget: "string"},
+				{label: "Title", name: "title", widget: "string", required: true},
+				{label: "Slug", name: "slug", widget: "string", required: true},
 			],
 		});
 

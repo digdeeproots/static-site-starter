@@ -1,4 +1,4 @@
-import { stringField, textField, objectField, hiddenField } from "./fields";
+import { stringField, textField, objectField, hiddenField, listField } from "./fields";
 
 export const gitgateway = (branch='staging') => ({
 	name: "git-gateway",
@@ -33,13 +33,17 @@ export const filesCollection = (label, files) => ({
 
 export const folderCollection = (plural_label, label, folder, extra_fields=[]) => {
 	if(!extra_fields.find(f => f.name === 'title')) {
-		extra_fields = [...extra_fields, {label: "Title", name: "title", widget: "string"}]
+		extra_fields = [...extra_fields, stringField("Title", "title", true)]
+	}
+	if(!extra_fields.find(f => f.name === 'slug')) {
+		extra_fields = [...extra_fields, stringField("Slug", "slug", true)]
 	}
 	return {
 		...collectionDefaults(plural_label, label.toLowerCase()),
 		label_singular: label,
 		folder: `content/en/${folder}`,
 		create: true,
+		slug: '{{fields.slug}}',
 		fields: extra_fields,
 	};
 }
@@ -62,6 +66,7 @@ export const pageDefaults = [
 		stringField('Title used in search engine results', 'title'),
 		textField("SEO description", "description"),
 	]),
+	// imageListField("Images", 'images'),
 ];
 
 export const buttonDefaults = (label = "Button", name = "button") =>

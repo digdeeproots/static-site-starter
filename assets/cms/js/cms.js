@@ -1,3 +1,5 @@
+window.CMS_MANUAL_INIT = true;
+
 import React from "react";
 import CMS from "netlify-cms-app";
 
@@ -12,6 +14,5 @@ import CMS from "netlify-cms-app";
 
 import config from "./config";
 
-window.CMS_MANUAL_INIT = true;
 window.CMS_CONFIGURATION = config;
 CMS.init({ config });
