@@ -2,7 +2,7 @@
 title: The real title
 linkTitle: The link title
 menu_title: Shorter, subcontextual
-slug: this-is-the-article
+slug: this-is-the-slug
 seo:
   title: The SEO title
   description: And a description.
