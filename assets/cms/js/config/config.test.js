@@ -152,7 +152,7 @@ describe('configuring CMS collections', () => {
 
 	test('articles', () => {
 		verify(config).hasCollection(
-			nestedFolderCollection('Articles', 'Article', 'blog', [
+			nestedFolderCollection('Articles', 'Article', 'articles', [
 				...pageDefaults,
 				markdownField('Body', 'body'),
 			])
