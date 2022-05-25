@@ -23,6 +23,32 @@ export const stringField = (
   required,
 })
 
+export const dateField = (
+  label = "Date",
+  name = "date",
+  required = false
+) => ({
+  label,
+  name,
+  widget: "datetime",
+  required,
+	format: "YYYY-MM-DD",
+	time_format: false,
+})
+
+export const dateTimeField = (
+  label = "DateTime",
+  name = "datetime",
+  required = false
+) => ({
+  label,
+  name,
+  widget: "datetime",
+  required,
+	format: "YYYY-MM-DDTHH:mm:ssZZ",
+	time_format: true,
+})
+
 export const objectField = (
   label = "Object",
   name = "object",
@@ -57,5 +83,6 @@ export const hiddenField = (
   label,
   name,
   widget: "hidden",
-  "default": default_value,
+  default: default_value,
+	required: true,
 })

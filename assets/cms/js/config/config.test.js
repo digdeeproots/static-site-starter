@@ -1,5 +1,5 @@
 import { config, using_github, using_localgit } from ".";
-import { markdownField, objectField, stringField, textField } from './fields'
+import { dateField, hiddenField, markdownField, objectField, stringField, textField } from './fields'
 import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow } from "./patterns";
 
 test('default config should be to use local git', () => {
@@ -70,13 +70,12 @@ describe('generate config for recurring patterns', () => {
 	test('default per-page content fields are correct', () => {
 		expect(pageDefaults).toEqual(
 			expect.arrayContaining([
-				stringField('Default title, also used in links to the page', 'title', true),
-				stringField('Title used in menus', 'menu_title', true),
+				dateField('Publish date', 'date', true),
+				stringField('Default title (used in search engine results, browser tab, etc)', 'title', true),
+				stringField("Title used in menus - within the context of the section's title", 'linkTitle', true),
 				stringField('Slug used in URLs', 'slug', true),
-				objectField('SEO', 'seo', [
-					stringField('Title used in search engine results', 'title', false),
-					textField('SEO description', 'description', false),
-				], true),
+				hiddenField('Author', 'author', 'Deep Roots ([@digdeeproots](https://twitter.com/digdeeproots/))'),
+				textField("SEO description", "description", false),
 			])
 		);
 	});
