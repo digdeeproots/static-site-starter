@@ -2,6 +2,7 @@ window.CMS_MANUAL_INIT = true;
 
 import React from "react";
 import CMS from "netlify-cms-app";
+import { ParentControl, ParentPreview} from "./ParentWidget";
 
 // import HomePreview from "./cms-preview-templates/home";
 // import PostPreview from "./cms-preview-templates/post";
@@ -11,6 +12,8 @@ import CMS from "netlify-cms-app";
 
 // import myCustomEditorComponent from "./editor-components";
 // CMS.registerEditorComponent(myCustomEditorComponent);
+
+CMS.registerWidget('parent', ParentControl, ParentPreview);
 
 import { config } from "./config";
 

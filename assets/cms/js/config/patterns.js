@@ -73,3 +73,7 @@ export const buttonDefaults = (label = "Button", name = "button") =>
     stringField("Text", "text", true),
     stringField("URL", "url", true),
   ]);
+
+export const nestedCollectionFileChoiceMetaFields = {
+	path: { label: 'Parent', widget: 'parent', index_file: 'index' }
+}

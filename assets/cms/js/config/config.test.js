@@ -1,6 +1,6 @@
 import { config, using_github, using_localgit } from ".";
-import { dateField, hiddenField, markdownField, objectField, stringField, textField } from './fields'
-import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow } from "./patterns";
+import { dateField, hiddenField, markdownField, stringField, textField } from './fields'
+import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow, nestedCollectionFileChoiceMetaFields } from "./patterns";
 
 test('default config should be to use local git', () => {
   expect(config).toBe(using_localgit);
@@ -151,11 +151,12 @@ describe('configuring CMS collections', () => {
 	});
 
 	test('articles', () => {
-		verify(config).hasCollection(
-			nestedFolderCollection('Articles', 'Article', 'articles', [
+		verify(config).hasCollection({
+			...nestedFolderCollection('Articles', 'Article', 'articles', [
 				...pageDefaults,
 				markdownField('Body', 'body'),
-			])
-		);
+			]),
+			meta: nestedCollectionFileChoiceMetaFields,
+		});
 	});
 });
