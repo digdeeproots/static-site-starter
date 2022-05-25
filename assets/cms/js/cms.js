@@ -12,7 +12,7 @@ import CMS from "netlify-cms-app";
 // import myCustomEditorComponent from "./editor-components";
 // CMS.registerEditorComponent(myCustomEditorComponent);
 
-import config from "./config";
+import { config } from "./config";
 
 window.CMS_CONFIGURATION = config;
 CMS.init({ config });

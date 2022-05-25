@@ -1,13 +1,13 @@
-import config from ".";
+import { config, using_github, using_localgit } from ".";
 import { markdownField, objectField, stringField, textField } from './fields'
 import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow } from "./patterns";
 
-test('config exists', () => {
-  expect(config).toBeDefined();
+test('default config should be to use local git', () => {
+  expect(config).toBe(using_localgit);
 });
 
-test('config defines editorial workflow', () => {
-  expect(config).toEqual(expect.objectContaining({
+test('config defines GH editorial workflow', () => {
+  expect(using_github).toEqual(expect.objectContaining({
 		backend: {
 			branch: expect.anything(),
 			cms_label_prefix: expect.stringMatching(/^content\//),
@@ -18,6 +18,19 @@ test('config defines editorial workflow', () => {
 		},
 		load_config_file: false,
 		publish_mode: 'editorial_workflow',
+		media_folder: 'static/img',
+		public_folder: '/img'
+	}));
+});
+
+test('config defines local git workflow', () => {
+  expect(using_localgit).toEqual(expect.objectContaining({
+		backend: {
+			cms_label_prefix: expect.stringMatching(/^content\//),
+			name: "git-gateway",
+		},
+		load_config_file: false,
+		local_backend: true,
 		media_folder: 'static/img',
 		public_folder: '/img'
 	}));
