@@ -124,6 +124,7 @@ describe('generate config for recurring patterns', () => {
 				summary: '{{dirname}}/{{filename}} --- {{title}} ({{date}})',
 				nested: {
 					depth: 30,
+					summary: "{{slug}}",
 				},
 				media_folder: '',
 				public_folder: '',

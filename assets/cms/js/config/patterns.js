@@ -81,6 +81,7 @@ export const nestedFolderCollection = (plural_label, label, folder, extra_fields
 	summary: '{{dirname}}/{{filename}} --- {{title}} ({{date}})',
 	nested: {
 		depth: 30,
+		summary: "{{slug}}",
 	},
 	media_folder: '',
 	public_folder: '',
