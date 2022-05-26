@@ -43,7 +43,7 @@ describe('generate config for recurring patterns', () => {
 				name: 'github',
 				repo: 'the/repo',
 				branch: 'some/branch',
-				cms_label_prefix: 'content/editorial/',
+				cms_label_prefix: expect.stringMatching(/^content\//),
 			})
 		);
 	});
@@ -53,7 +53,7 @@ describe('generate config for recurring patterns', () => {
 			expect.objectContaining({
 				name: 'git-gateway',
 				branch: 'some/branch',
-				cms_label_prefix: 'content/editorial/',
+				cms_label_prefix: expect.stringMatching(/^content\//),
 			})
 		);
 	});

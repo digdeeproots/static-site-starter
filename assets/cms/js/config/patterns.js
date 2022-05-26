@@ -3,14 +3,14 @@ import { stringField, textField, objectField, hiddenField, listField, dateField 
 export const gitgateway = (branch='staging') => ({
 	name: "git-gateway",
 	branch,
-	cms_label_prefix: "content/editorial/",
+	cms_label_prefix: "content/",
 });
 
 export const github = (repo, branch='staging') => ({
 	name: "github",
 	repo,
 	branch,
-	cms_label_prefix: "content/editorial/",
+	cms_label_prefix: "content/",
 });
 
 export const with_editorial_workflow = () => ({
