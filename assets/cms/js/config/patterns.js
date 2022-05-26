@@ -61,6 +61,7 @@ const folderCollectionSharedElements = (plural_label, label, folder, extra_field
 		slug: '{{userfilename}}',
 		folder: `content/en/${folder}`,
 		create: true,
+		sortable_fields: ['userfilename', 'date'],
 		fields: extra_fields,
 	};
 }
@@ -68,13 +69,13 @@ const folderCollectionSharedElements = (plural_label, label, folder, extra_field
 export const folderCollection = (plural_label, label, folder, extra_fields=[]) => {
 	return {
 		...folderCollectionSharedElements(plural_label, label, folder, extra_fields),
-		summary: '{{filename}}',
+		summary: '{{filename}} --- {{title}} ({{date}})',
 	};
 }
 
 export const nestedFolderCollection = (plural_label, label, folder, extra_fields=[]) => ({
   ...folderCollectionSharedElements(plural_label, label, folder, extra_fields),
-	summary: '{{dirname}}/{{filename}}',
+	summary: '{{dirname}}/{{filename}} --- {{title}} ({{date}})',
 	nested: {
 		depth: 30,
 	},
