@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Content Manager</title>
+
+	{{- $cms := resources.Get "cms/index.js" | js.Build (dict "targetPath" "js/cms.js" "sourceMap" "external" "minify" true "target" "es2020") | fingerprint -}}
+	<script type="module" src="{{ $cms.RelPermalink }}" integrity="{{ $cms.Data.Integrity }}" defer></script>
+</head>
+<body>
+	{{ block "main" . }}{{ end }}
+</body>
+</html>
