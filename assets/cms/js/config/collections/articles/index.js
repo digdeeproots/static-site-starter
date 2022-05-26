@@ -13,7 +13,6 @@ let articlesCollection = {
 		]),
 		markdownField('Body', 'body'),
 	]),
-	meta: nestedCollectionFileChoiceMetaFields,
 };
 articlesCollection.view_groups.push({label: 'Primary Series', field: 'series', pattern: '(?<=").*?(?=")'});
 

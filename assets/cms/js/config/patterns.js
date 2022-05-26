@@ -41,10 +41,6 @@ export const buttonDefaults = (label = "Button", name = "button") =>
     stringField("URL", "url", true),
   ]);
 
-export const nestedCollectionFileChoiceMetaFields = {
-	path: { label: 'Parent', widget: 'parent', index_file: 'index' }
-}
-
 export const filesCollection = (label, files) => ({
   ...collectionDefaults(label, label.toLowerCase()),
   files,
@@ -85,4 +81,7 @@ export const nestedFolderCollection = (plural_label, label, folder, extra_fields
 	},
 	media_folder: '',
 	public_folder: '',
+	meta: {
+		path: { label: 'Parent', widget: 'parent', index_file: 'index' }
+	},
 });

@@ -1,6 +1,6 @@
 import { config, using_github, using_localgit } from ".";
 import { dateField, hiddenField, markdownField, multiselectField, stringField, textField } from './fields'
-import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow, nestedCollectionFileChoiceMetaFields } from "./patterns";
+import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow } from "./patterns";
 
 test('default config should be to use local git', () => {
   expect(config).toBe(using_localgit);
@@ -128,6 +128,9 @@ describe('generate config for recurring patterns', () => {
 				},
 				media_folder: '',
 				public_folder: '',
+				meta: {
+					path: { label: 'Parent', widget: 'parent', index_file: 'index' }
+				},
 			})
 		);
 	});
@@ -173,7 +176,6 @@ describe('configuring CMS collections', () => {
 				]),
 				markdownField('Body', 'body'),
 			]),
-			meta: nestedCollectionFileChoiceMetaFields,
 			view_groups: expect.arrayContaining([
 				{label: 'Primary Series', field: 'series', pattern: '(?<=").*?(?=")'}
 			]),
