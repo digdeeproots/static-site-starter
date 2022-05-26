@@ -123,7 +123,7 @@ export class ParentControl extends React.Component {
     if (this.isNewRecord()) {
       this.props.onChange(this.getValue() + '/');
       // track slug field so we can use it for the folder name
-      const filenameInput = document.querySelector('[id*=filename-field]');
+      const filenameInput = document.querySelector('[id*=userfilename-field]');
       filenameInput.addEventListener('input', (e) => {
         const title = e.target.value;
         this.setState({ title });

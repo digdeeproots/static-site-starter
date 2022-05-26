@@ -84,33 +84,40 @@ describe('generate config for recurring patterns', () => {
 			label: plural_label,
 			label_singular: singular_label,
 			name: singular_label.toLowerCase(),
-			identifier_field: 'filename',
-			slug: '{{filename}}',
+			identifier_field: 'userfilename',
+			slug: '{{userfilename}}',
 			editor: {
 				preview: true,
 			},
 			folder: `content/en/${folder}`,
 			create: true,
 			fields: [
-				{label: "Slug used in URLs", name: "filename", widget: "string", required: true},
+				{label: "Slug used in URLs", name: "userfilename", widget: "string", required: true},
 			],
 		});
 
 	test('non-nested folder collection contains shared collection values', () => {
 		expect(folderCollection('Labels', 'Label', 'path/subpath')).toEqual(
-			basic_folder_collection('Labels', 'Label', 'path/subpath')
-		);
+			basic_folder_collection('Labels', 'Label', 'path/subpath'));
 	});
 
 	test('nested folder collection contains shared collection values', () => {
 		expect(nestedFolderCollection('Labels', 'Label', 'path/subpath')).toEqual(
-			basic_folder_collection('Labels', 'Label', 'path/subpath')
+			basic_folder_collection('Labels', 'Label', 'path/subpath'));
+	});
+
+	test('non-nested folder collection has way to set file path', () => {
+		expect(folderCollection('Labels', 'Label', 'path/subpath')).toEqual(
+			expect.objectContaining({
+				summary: '{{filename}}',
+			})
 		);
 	});
 
 	test('nested folder collection has way to set file path and store media', () => {
 		expect(nestedFolderCollection('Labels', 'Label', 'path/subpath')).toEqual(
 			expect.objectContaining({
+				summary: '{{dirname}}/{{filename}}',
 				nested: {
 					depth: 30,
 				},

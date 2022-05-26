@@ -51,14 +51,14 @@ export const filesCollection = (label, files) => ({
 });
 
 const folderCollectionSharedElements = (plural_label, label, folder, extra_fields=[]) => {
-	if(!extra_fields.find(f => f.name === 'slug')) {
-		extra_fields = [stringField("Slug used in URLs", "filename", true), ...extra_fields]
+	if(!extra_fields.find(f => f.name === 'userfilename')) {
+		extra_fields = [stringField("Slug used in URLs", "userfilename", true), ...extra_fields]
 	}
 	return {
 		...collectionDefaults(plural_label, label.toLowerCase()),
 		label_singular: label,
-		identifier_field: 'filename',
-		slug: '{{filename}}',
+		identifier_field: 'userfilename',
+		slug: '{{userfilename}}',
 		folder: `content/en/${folder}`,
 		create: true,
 		fields: extra_fields,
@@ -68,11 +68,13 @@ const folderCollectionSharedElements = (plural_label, label, folder, extra_field
 export const folderCollection = (plural_label, label, folder, extra_fields=[]) => {
 	return {
 		...folderCollectionSharedElements(plural_label, label, folder, extra_fields),
+		summary: '{{filename}}',
 	};
 }
 
 export const nestedFolderCollection = (plural_label, label, folder, extra_fields=[]) => ({
   ...folderCollectionSharedElements(plural_label, label, folder, extra_fields),
+	summary: '{{dirname}}/{{filename}}',
 	nested: {
 		depth: 30,
 	},
