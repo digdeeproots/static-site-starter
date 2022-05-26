@@ -97,6 +97,7 @@ describe('generate config for recurring patterns', () => {
 			create: true,
 			fields: [
 				{label: "Slug used in URLs", name: "userfilename", widget: "string", required: true},
+				{label: "Body", name: "body", widget: "markdown", required: true},
 			],
 		});
 
@@ -174,7 +175,6 @@ describe('configuring CMS collections', () => {
 					'Intentional Learning',
 					'Legacy Newsletter',
 				]),
-				markdownField('Body', 'body'),
 			]),
 			view_groups: expect.arrayContaining([
 				{label: 'Primary Series', field: 'series', pattern: '(?<=").*?(?=")'}

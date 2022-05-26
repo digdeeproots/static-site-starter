@@ -1,4 +1,4 @@
-import { stringField, textField, objectField, hiddenField, listField, dateField } from "./fields";
+import { stringField, textField, objectField, hiddenField, listField, dateField, markdownField } from "./fields";
 
 export const gitgateway = (branch='staging') => ({
 	name: "git-gateway",
@@ -61,7 +61,7 @@ const folderCollectionSharedElements = (plural_label, label, folder, extra_field
 		view_groups: [
 			{label: 'Year', field: 'date', pattern: '\\d{4}'},
 		],
-		fields: extra_fields,
+		fields: [...extra_fields, markdownField('Body', 'body')],
 	};
 }
 

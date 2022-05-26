@@ -11,7 +11,6 @@ let articlesCollection = {
 			'Intentional Learning',
 			'Legacy Newsletter',
 		]),
-		markdownField('Body', 'body'),
 	]),
 };
 articlesCollection.view_groups.push({label: 'Primary Series', field: 'series', pattern: '(?<=").*?(?=")'});
