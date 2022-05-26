@@ -1,5 +1,5 @@
 import { config, using_github, using_localgit } from ".";
-import { dateField, hiddenField, markdownField, stringField, textField } from './fields'
+import { dateField, hiddenField, markdownField, multiselectField, stringField, textField } from './fields'
 import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow, nestedCollectionFileChoiceMetaFields } from "./patterns";
 
 test('default config should be to use local git', () => {
@@ -89,6 +89,11 @@ describe('generate config for recurring patterns', () => {
 			editor: {
 				preview: true,
 			},
+			sortable_fields: ['userfilename', 'date'],
+			view_groups: [
+				{label: 'Year', field: 'date', pattern: '\\d{4}'},
+				{label: 'Primary Series', field: 'xseries', pattern: '(?<=").*?(?=")'},
+			],
 			folder: `content/en/${folder}`,
 			create: true,
 			fields: [
@@ -109,7 +114,7 @@ describe('generate config for recurring patterns', () => {
 	test('non-nested folder collection has way to set file path', () => {
 		expect(folderCollection('Labels', 'Label', 'path/subpath')).toEqual(
 			expect.objectContaining({
-				summary: '{{filename}}',
+				summary: '{{filename}} --- {{title}} ({{date}})',
 			})
 		);
 	});
@@ -117,7 +122,7 @@ describe('generate config for recurring patterns', () => {
 	test('nested folder collection has way to set file path and store media', () => {
 		expect(nestedFolderCollection('Labels', 'Label', 'path/subpath')).toEqual(
 			expect.objectContaining({
-				summary: '{{dirname}}/{{filename}}',
+				summary: '{{dirname}}/{{filename}} --- {{title}} ({{date}})',
 				nested: {
 					depth: 30,
 				},
@@ -159,6 +164,13 @@ describe('configuring CMS collections', () => {
 		verify(config).hasCollection({
 			...nestedFolderCollection('Articles', 'Article', 'articles', [
 				...pageDefaults,
+				multiselectField('Series', 'xseries', [
+					'Naming as a Process',
+					'Legacy to DevOps',
+					'Monolith Busting',
+					'Intentional Learning',
+					'Legacy Newsletter',
+				]),
 				markdownField('Body', 'body'),
 			]),
 			meta: nestedCollectionFileChoiceMetaFields,

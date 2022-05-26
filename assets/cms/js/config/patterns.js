@@ -62,6 +62,10 @@ const folderCollectionSharedElements = (plural_label, label, folder, extra_field
 		folder: `content/en/${folder}`,
 		create: true,
 		sortable_fields: ['userfilename', 'date'],
+		view_groups: [
+			{label: 'Year', field: 'date', pattern: '\\d{4}'},
+			{label: 'Primary Series', field: 'xseries', pattern: '(?<=").*?(?=")'},
+		],
 		fields: extra_fields,
 	};
 }

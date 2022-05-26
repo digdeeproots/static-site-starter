@@ -49,6 +49,20 @@ export const dateTimeField = (
 	time_format: true,
 })
 
+export const multiselectField = (
+  label = "Options",
+  name = "options",
+	options = [],
+  required = false
+) => ({
+  label,
+  name,
+  widget: "select",
+  required,
+	options,
+	multiple: true,
+})
+
 export const objectField = (
   label = "Object",
   name = "object",
@@ -72,6 +86,18 @@ export const listField = (
   name,
   widget: "list",
   fields,
+  required,
+})
+
+export const stringListField = (
+  label = "List",
+  name = "list",
+  required = true
+) => ({
+  label,
+  name,
+  widget: "list",
+	field: {name: "items", label: "Items", widget: "string"},
   required,
 })
 
