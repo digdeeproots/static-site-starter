@@ -122,9 +122,9 @@ export class ParentControl extends React.Component {
   async componentDidMount() {
     if (this.isNewRecord()) {
       this.props.onChange(this.getValue() + '/');
-      // track title field so we can use it for the folder name
-      const titleInput = document.querySelector('[id*=title-field]');
-      titleInput.addEventListener('input', (e) => {
+      // track slug field so we can use it for the folder name
+      const filenameInput = document.querySelector('[id*=filename-field]');
+      filenameInput.addEventListener('input', (e) => {
         const title = e.target.value;
         this.setState({ title });
         const selectProps = this.selectRef.current.props;
@@ -203,9 +203,9 @@ export class ParentPreview extends React.Component {
     const { field } = this.props;
     const value = this.props.value || '';
     if (value === '/') {
-      return `<title>/${field.get('index_file')}.md`;
+      return `<slug>/${field.get('index_file')}.md`;
     } else if (value.endsWith('/')) {
-      return `${value + '<title>'}/${field.get('index_file')}.md`;
+      return `${value + '<slug>'}/${field.get('index_file')}.md`;
     } else {
       return `${value}/${field.get('index_file')}.md`;
     }
