@@ -28,9 +28,8 @@ export const collectionDefaults = (label, name) => ({
 
 export const pageDefaults = [
 	dateField('Publish date', 'date', true),
-	stringField('Default title (used in search engine results, browser tab, etc)', 'title', true),
+	stringField('Default title (used in search engine results, browser tab, file name, etc)', 'title', true),
 	stringField("Title used in menus - within the context of the section's title", 'linkTitle', true),
-	stringField('Slug used in URLs', 'slug', true),
 	hiddenField('Author', 'author', 'Deep Roots ([@digdeeproots](https://twitter.com/digdeeproots/))'),
 	textField("SEO description", "description"),
 	// lististField("Resources", 'resources', []),
@@ -51,25 +50,31 @@ export const filesCollection = (label, files) => ({
   files,
 });
 
-export const folderCollection = (plural_label, label, folder, extra_fields=[]) => {
+const folderCollectionSharedElements = (plural_label, label, folder, extra_fields=[]) => {
 	if(!extra_fields.find(f => f.name === 'title')) {
 		extra_fields = [...extra_fields, stringField("Title", "title", true)]
-	}
-	if(!extra_fields.find(f => f.name === 'slug')) {
-		extra_fields = [...extra_fields, stringField("Slug", "slug", true)]
 	}
 	return {
 		...collectionDefaults(plural_label, label.toLowerCase()),
 		label_singular: label,
 		folder: `content/en/${folder}`,
 		create: true,
-		slug: '{{fields.slug}}',
 		fields: extra_fields,
 	};
 }
 
+export const folderCollection = (plural_label, label, folder, extra_fields=[]) => {
+	if(!extra_fields.find(f => f.name === 'slug')) {
+		extra_fields = [...extra_fields, stringField("Slug used in URLs", "slug", true)]
+	}
+	return {
+		...folderCollectionSharedElements(plural_label, label, folder, extra_fields),
+		slug: '{{fields.slug}}',
+	};
+}
+
 export const nestedFolderCollection = (plural_label, label, folder, extra_fields=[]) => ({
-  ...folderCollection(plural_label, label, folder, extra_fields),
+  ...folderCollectionSharedElements(plural_label, label, folder, extra_fields),
 	nested: {
 		depth: 30,
 	},
