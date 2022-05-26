@@ -26,6 +26,26 @@ export const collectionDefaults = (label, name) => ({
   },
 });
 
+export const pageDefaults = [
+	dateField('Publish date', 'date', true),
+	stringField('Default title (used in search engine results, browser tab, etc)', 'title', true),
+	stringField("Title used in menus - within the context of the section's title", 'linkTitle', true),
+	stringField('Slug used in URLs', 'slug', true),
+	hiddenField('Author', 'author', 'Deep Roots ([@digdeeproots](https://twitter.com/digdeeproots/))'),
+	textField("SEO description", "description"),
+	// lististField("Resources", 'resources', []),
+];
+
+export const buttonDefaults = (label = "Button", name = "button") =>
+  objectField(label, name, [
+    stringField("Text", "text", true),
+    stringField("URL", "url", true),
+  ]);
+
+export const nestedCollectionFileChoiceMetaFields = {
+	path: { label: 'Parent', widget: 'parent', index_file: 'index' }
+}
+
 export const filesCollection = (label, files) => ({
   ...collectionDefaults(label, label.toLowerCase()),
   files,
@@ -57,23 +77,3 @@ export const nestedFolderCollection = (plural_label, label, folder, extra_fields
 	media_folder: '',
 	public_folder: '',
 });
-
-export const pageDefaults = [
-	dateField('Publish date', 'date', true),
-	stringField('Default title (used in search engine results, browser tab, etc)', 'title', true),
-	stringField("Title used in menus - within the context of the section's title", 'linkTitle', true),
-	stringField('Slug used in URLs', 'slug', true),
-	hiddenField('Author', 'author', 'Deep Roots ([@digdeeproots](https://twitter.com/digdeeproots/))'),
-	textField("SEO description", "description"),
-	// lististField("Resources", 'resources', []),
-];
-
-export const buttonDefaults = (label = "Button", name = "button") =>
-  objectField(label, name, [
-    stringField("Text", "text", true),
-    stringField("URL", "url", true),
-  ]);
-
-export const nestedCollectionFileChoiceMetaFields = {
-	path: { label: 'Parent', widget: 'parent', index_file: 'index' }
-}
