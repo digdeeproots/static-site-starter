@@ -121,7 +121,7 @@ describe('generate config for recurring patterns', () => {
 	test('nested folder collection has way to set file path and store media', () => {
 		expect(nestedFolderCollection('Labels', 'Label', 'path/subpath')).toEqual(
 			expect.objectContaining({
-				summary: '{{dirname}}/{{filename}} --- {{title}} ({{date}})',
+				summary: '{{dirname}} --- {{title}} ({{date}})',
 				nested: {
 					depth: 30,
 					summary: "{{linkTitle}}",

@@ -74,7 +74,7 @@ export const folderCollection = (plural_label, label, folder, extra_fields=[]) =
 
 export const nestedFolderCollection = (plural_label, label, folder, extra_fields=[]) => ({
   ...folderCollectionSharedElements(plural_label, label, folder, extra_fields),
-	summary: '{{dirname}}/{{filename}} --- {{title}} ({{date}})',
+	summary: '{{dirname}} --- {{title}} ({{date}})',
 	nested: {
 		depth: 30,
 		summary: "{{linkTitle}}",
