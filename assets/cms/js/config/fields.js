@@ -1,37 +1,49 @@
 export const textField = (label = "Text", name = "text", required = false) => ({
-  label,
-  name,
-  widget: "text",
-  required,
+	label,
+	name,
+	widget: "text",
+	required,
 })
 
 export const markdownField = (label = "Markdown", name = "markdown", required = true) => ({
-  label,
-  name,
-  widget: "markdown",
-  required,
+	label,
+	name,
+	widget: "markdown",
+	required,
 })
 
 export const stringField = (
-  label = "String",
-  name = "string",
-  required = false
+	label = "String",
+	name = "string",
+	required = false
 ) => ({
-  label,
-  name,
-  widget: "string",
-  required,
+	label,
+	name,
+	widget: "string",
+	required,
+})
+
+export const intField = (
+	label = "String",
+	name = "string",
+	required = false
+) => ({
+	label,
+	name,
+	widget: "number",
+	required,
+	value_type: 'int',
 })
 
 export const dateField = (
-  label = "Date",
-  name = "date",
-  required = false
+	label = "Date",
+	name = "date",
+	required = false
 ) => ({
-  label,
-  name,
-  widget: "datetime",
-  required,
+	label,
+	name,
+	widget: "datetime",
+	required,
 	format: "YYYY-MM-DD",
 	time_format: false,
 })
