@@ -1,10 +1,10 @@
 import { multiselectField, markdownField } from "../../fields";
 import { nestedCollectionFileChoiceMetaFields, nestedFolderCollection, pageDefaults } from "../../patterns";
 
-const articlesCollection = {
+let articlesCollection = {
   ...nestedFolderCollection('Articles', "Article", 'articles', [
 		...pageDefaults,
-		multiselectField('Series', 'xseries', [
+		multiselectField('Series', 'series', [
 			'Naming as a Process',
 			'Legacy to DevOps',
 			'Monolith Busting',
@@ -15,5 +15,6 @@ const articlesCollection = {
 	]),
 	meta: nestedCollectionFileChoiceMetaFields,
 };
+articlesCollection.view_groups.push({label: 'Primary Series', field: 'series', pattern: '(?<=").*?(?=")'});
 
 export default articlesCollection;

@@ -90,10 +90,9 @@ describe('generate config for recurring patterns', () => {
 				preview: true,
 			},
 			sortable_fields: ['userfilename', 'date'],
-			view_groups: [
+			view_groups: expect.arrayContaining([
 				{label: 'Year', field: 'date', pattern: '\\d{4}'},
-				{label: 'Primary Series', field: 'xseries', pattern: '(?<=").*?(?=")'},
-			],
+			]),
 			folder: `content/en/${folder}`,
 			create: true,
 			fields: [
@@ -164,7 +163,7 @@ describe('configuring CMS collections', () => {
 		verify(config).hasCollection({
 			...nestedFolderCollection('Articles', 'Article', 'articles', [
 				...pageDefaults,
-				multiselectField('Series', 'xseries', [
+				multiselectField('Series', 'series', [
 					'Naming as a Process',
 					'Legacy to DevOps',
 					'Monolith Busting',
@@ -174,6 +173,9 @@ describe('configuring CMS collections', () => {
 				markdownField('Body', 'body'),
 			]),
 			meta: nestedCollectionFileChoiceMetaFields,
+			view_groups: expect.arrayContaining([
+				{label: 'Primary Series', field: 'series', pattern: '(?<=").*?(?=")'}
+			]),
 		});
 	});
 });

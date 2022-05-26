@@ -14,12 +14,13 @@ enableRobotsTXT = true
 enableGitInfo = true
 
 # Comment out to enable taxonomies in Docsy
-disableKinds = ["taxonomy", "taxonomyTerm"]
+# disableKinds = ["taxonomy", "taxonomyTerm"]
 
 # You can add your own taxonomies
 [taxonomies]
 tag = "tags"
 category = "categories"
+series = "series"
 
 [params.taxonomy]
 # set taxonomyCloud = [] to hide taxonomy clouds
