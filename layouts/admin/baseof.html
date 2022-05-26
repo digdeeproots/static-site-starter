@@ -6,6 +6,7 @@
 
 	<title>Content Manager</title>
 
+	{{ partialCached "head-css.html" . "asdf" -}}
 	{{- $cms := resources.Get "cms/index.js" | js.Build (dict "targetPath" "js/cms.js" "sourceMap" "external" "minify" true "target" "es2020") | fingerprint -}}
 	<script type="module" src="{{ $cms.RelPermalink }}" integrity="{{ $cms.Data.Integrity }}" defer></script>
 </head>

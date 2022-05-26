@@ -14,6 +14,7 @@ import { ParentControl, ParentPreview} from "./ParentWidget";
 // CMS.registerEditorComponent(myCustomEditorComponent);
 
 CMS.registerWidget('parent', ParentControl, ParentPreview);
+CMS.registerPreviewStyle(window._DR_MAIN_CSS_FILE);
 
 import { config } from "./config";
 
