@@ -123,7 +123,6 @@ describe('generate config for recurring patterns', () => {
 				nested: {
 					depth: 30,
 				},
-				path: '{{slug}}/index',
 				media_folder: '',
 				public_folder: '',
 			})

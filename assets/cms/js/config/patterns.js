@@ -78,7 +78,6 @@ export const nestedFolderCollection = (plural_label, label, folder, extra_fields
 	nested: {
 		depth: 30,
 	},
-	path: '{{slug}}/index',
 	media_folder: '',
 	public_folder: '',
 });
