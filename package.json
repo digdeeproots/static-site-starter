@@ -59,6 +59,7 @@
 		"postcss-nested": "^5.0.6",
 		"postcss-preset-env": "^7.6.0",
 		"shx": "^0.3.4",
+		"slugify": "^1.6.5",
 		"stylelint": "^14.8.2",
 		"stylelint-config-standard-scss": "^3.0.0"
 	},
