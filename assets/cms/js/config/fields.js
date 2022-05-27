@@ -1,11 +1,12 @@
 const _capitalize = (word) => (word.charAt(0).toUpperCase + word.substr(1));
 
-const _makeField = (widget_name) => (
+const _makeField = (widget_name, extra_widget_params = {}) => (
 	(label = _capitalize(widget_name), name = widget_name, required = true) => ({
 		label,
 		name,
 		widget: widget_name,
 		required,
+		...extra_widget_params,
 	})
 );
 
