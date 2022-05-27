@@ -27,11 +27,11 @@ export const collectionDefaults = (label, name) => ({
 });
 
 export const pageDefaults = [
-	dateField('Publish date', 'date', true),
-	stringField('Default title (used in search engine results, browser tab, file name, etc)', 'title', true),
-	stringField("Title used in menus - within the context of the section's title", 'linkTitle', true),
+	dateField('Publish date', 'date'),
+	stringField('Default title (used in search engine results, browser tab, file name, etc)', 'title'),
+	stringField("Title used in menus - within the context of the section's title", 'linkTitle'),
 	hiddenField('Author', 'author', 'Deep Roots ([@digdeeproots](https://twitter.com/digdeeproots/))'),
-	textField("SEO description", "description"),
+	textField("SEO description", "description", false),
 	// lististField("Resources", 'resources', []),
 ];
 

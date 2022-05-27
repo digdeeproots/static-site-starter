@@ -1,16 +1,15 @@
-	export const textField = (label = "Text", name = "text", required = false) => ({
-	label,
-	name,
-	widget: "text",
-	required,
-})
+const _capitalize = (word) => (word.charAt(0).toUpperCase + word.substr(1));
 
-export const markdownField = (label = "Markdown", name = "markdown", required = true) => ({
+const _makeField = (widget_name, required_default) => (
+	(label = _capitalize(widget_name), name = widget_name, required = required_default) => ({
 	label,
 	name,
-	widget: "markdown",
+	widget: widget_name,
 	required,
 })
+);
+export const textField = _makeField('text', true);
+export const markdownField = _makeField('markdown', true);
 
 export const imageField = (label = "Image", name = "image", required = true) => ({
 	label,
@@ -22,7 +21,7 @@ export const imageField = (label = "Image", name = "image", required = true) => 
 export const stringField = (
 	label = "String",
 	name = "string",
-	required = false
+	required = true
 ) => ({
 	label,
 	name,
@@ -33,7 +32,7 @@ export const stringField = (
 export const intField = (
 	label = "String",
 	name = "string",
-	required = false
+	required = true
 ) => ({
 	label,
 	name,
@@ -45,7 +44,7 @@ export const intField = (
 export const dateField = (
 	label = "Date",
 	name = "date",
-	required = false
+	required = true
 ) => ({
 	label,
 	name,
@@ -58,7 +57,7 @@ export const dateField = (
 export const dateTimeField = (
   label = "DateTime",
   name = "datetime",
-  required = false
+  required = true
 ) => ({
   label,
   name,
@@ -72,7 +71,7 @@ export const multiselectField = (
   label = "Options",
   name = "options",
 	options = [],
-  required = false
+  required = true
 ) => ({
   label,
   name,
