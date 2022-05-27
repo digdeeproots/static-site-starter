@@ -15,8 +15,8 @@ export const imageField = _makeField('image');
 export const stringField = _makeField('string');
 
 export const intField = (
-	label = "String",
-	name = "string",
+	label = "Int",
+	name = "int",
 	required = true
 ) => ({
 	label,
