@@ -1,4 +1,4 @@
-export const textField = (label = "Text", name = "text", required = false) => ({
+	export const textField = (label = "Text", name = "text", required = false) => ({
 	label,
 	name,
 	widget: "text",
@@ -9,6 +9,13 @@ export const markdownField = (label = "Markdown", name = "markdown", required = 
 	label,
 	name,
 	widget: "markdown",
+	required,
+})
+
+export const imageField = (label = "Image", name = "image", required = true) => ({
+	label,
+	name,
+	widget: "image",
 	required,
 })
 
@@ -88,7 +95,7 @@ export const objectField = (
   required,
 })
 
-export const listField = (
+export const objectListField = (
   label = "List",
   name = "list",
   fields = [],
@@ -101,7 +108,8 @@ export const listField = (
   required,
 })
 
-export const stringListField = (
+export const simpleListField = (
+	item_widget = stringField,
   label = "List",
   name = "list",
   required = true
@@ -109,7 +117,7 @@ export const stringListField = (
   label,
   name,
   widget: "list",
-	field: {name: "items", label: "Items", widget: "string"},
+	field: item_widget('Value', 'value', true),
   required,
 })
 
