@@ -1,16 +1,16 @@
-import { stringField, textField, objectField, hiddenField, listField, dateField } from "./fields";
+import { stringField, textField, objectField, hiddenField, listField, dateField, markdownField } from "./fields";
 
 export const gitgateway = (branch='staging') => ({
 	name: "git-gateway",
 	branch,
-	cms_label_prefix: "content/editorial/",
+	cms_label_prefix: "content/",
 });
 
 export const github = (repo, branch='staging') => ({
 	name: "github",
 	repo,
 	branch,
-	cms_label_prefix: "content/editorial/",
+	cms_label_prefix: "content/",
 });
 
 export const with_editorial_workflow = () => ({
@@ -27,11 +27,11 @@ export const collectionDefaults = (label, name) => ({
 });
 
 export const pageDefaults = [
-	dateField('Publish date', 'date', true),
-	stringField('Default title (used in search engine results, browser tab, file name, etc)', 'title', true),
-	stringField("Title used in menus - within the context of the section's title", 'linkTitle', true),
+	dateField('Publish date', 'date'),
+	stringField('Default title (used in search engine results, browser tab, file name, etc)', 'title'),
+	stringField("Title used in menus - within the context of the section's title", 'linkTitle'),
 	hiddenField('Author', 'author', 'Deep Roots ([@digdeeproots](https://twitter.com/digdeeproots/))'),
-	textField("SEO description", "description"),
+	textField("SEO description", "description", false),
 	// lististField("Resources", 'resources', []),
 ];
 
@@ -61,7 +61,7 @@ const folderCollectionSharedElements = (plural_label, label, folder, extra_field
 		view_groups: [
 			{label: 'Year', field: 'date', pattern: '\\d{4}'},
 		],
-		fields: extra_fields,
+		fields: [...extra_fields, markdownField('Body', 'body')],
 	};
 }
 

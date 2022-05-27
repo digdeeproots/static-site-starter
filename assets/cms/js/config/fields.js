@@ -1,59 +1,28 @@
-export const textField = (label = "Text", name = "text", required = false) => ({
-  label,
-  name,
-  widget: "text",
-  required,
-})
+const _capitalize = (word) => (word.charAt(0).toUpperCase + word.substr(1));
 
-export const markdownField = (label = "Markdown", name = "markdown", required = true) => ({
-  label,
-  name,
-  widget: "markdown",
-  required,
-})
+const _makeField = (widget_name, extra_widget_params = {}) => (
+	(label = _capitalize(widget_name), name = widget_name, required = true) => ({
+		label,
+		name,
+		widget: widget_name,
+		required,
+		...extra_widget_params,
+	})
+);
 
-export const stringField = (
-  label = "String",
-  name = "string",
-  required = false
-) => ({
-  label,
-  name,
-  widget: "string",
-  required,
-})
-
-export const dateField = (
-  label = "Date",
-  name = "date",
-  required = false
-) => ({
-  label,
-  name,
-  widget: "datetime",
-  required,
-	format: "YYYY-MM-DD",
-	time_format: false,
-})
-
-export const dateTimeField = (
-  label = "DateTime",
-  name = "datetime",
-  required = false
-) => ({
-  label,
-  name,
-  widget: "datetime",
-  required,
-	format: "YYYY-MM-DDTHH:mm:ssZZ",
-	time_format: true,
-})
+export const textField = _makeField('text');
+export const markdownField = _makeField('markdown');
+export const imageField = _makeField('image');
+export const stringField = _makeField('string');
+export const intField = _makeField('number', {value_type: 'int'});
+export const dateField = _makeField('datetime', {format: "YYYY-MM-DD", time_format: false});
+export const dateTimeField = _makeField('datetime', {format: "YYYY-MM-DDTHH:mm:ssZZ", time_format: true});
 
 export const multiselectField = (
   label = "Options",
   name = "options",
 	options = [],
-  required = false
+  required = true
 ) => ({
   label,
   name,
@@ -76,7 +45,7 @@ export const objectField = (
   required,
 })
 
-export const listField = (
+export const objectListField = (
   label = "List",
   name = "list",
   fields = [],
@@ -89,15 +58,16 @@ export const listField = (
   required,
 })
 
-export const stringListField = (
+export const simpleListField = (
   label = "List",
   name = "list",
+	item_widget = stringField,
   required = true
 ) => ({
   label,
   name,
   widget: "list",
-	field: {name: "items", label: "Items", widget: "string"},
+	field: item_widget('Value', 'value', true),
   required,
 })
 

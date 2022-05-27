@@ -1,5 +1,5 @@
 import { config, using_github, using_localgit } from ".";
-import { dateField, hiddenField, markdownField, multiselectField, stringField, textField } from './fields'
+import { dateField, hiddenField, imageField, markdownField, multiselectField, objectField, objectListField, simpleListField, stringField, textField } from './fields'
 import { github, pageDefaults, filesCollection, folderCollection, nestedFolderCollection, gitgateway, with_editorial_workflow } from "./patterns";
 
 test('default config should be to use local git', () => {
@@ -43,7 +43,7 @@ describe('generate config for recurring patterns', () => {
 				name: 'github',
 				repo: 'the/repo',
 				branch: 'some/branch',
-				cms_label_prefix: 'content/editorial/',
+				cms_label_prefix: expect.stringMatching(/^content\//),
 			})
 		);
 	});
@@ -53,7 +53,7 @@ describe('generate config for recurring patterns', () => {
 			expect.objectContaining({
 				name: 'git-gateway',
 				branch: 'some/branch',
-				cms_label_prefix: 'content/editorial/',
+				cms_label_prefix: expect.stringMatching(/^content\//),
 			})
 		);
 	});
@@ -97,6 +97,7 @@ describe('generate config for recurring patterns', () => {
 			create: true,
 			fields: [
 				{label: "Slug used in URLs", name: "userfilename", widget: "string", required: true},
+				{label: "Body", name: "body", widget: "markdown", required: true},
 			],
 		});
 
@@ -174,7 +175,14 @@ describe('configuring CMS collections', () => {
 					'Intentional Learning',
 					'Legacy Newsletter',
 				]),
-				markdownField('Body', 'body'),
+				simpleListField('Images', 'images', imageField, false),
+				objectListField("Image resource info", 'resources', [
+					stringField("file name pattern to match", 'src', true),
+					stringField("Title", 'title', false),
+					objectField("", 'params', [
+						stringField('Byline', 'byline', true),
+					], true),
+				], false),
 			]),
 			view_groups: expect.arrayContaining([
 				{label: 'Primary Series', field: 'series', pattern: '(?<=").*?(?=")'}
