@@ -14,44 +14,9 @@ export const textField = _makeField('text');
 export const markdownField = _makeField('markdown');
 export const imageField = _makeField('image');
 export const stringField = _makeField('string');
-
-export const intField = (
-	label = "Int",
-	name = "int",
-	required = true
-) => ({
-	label,
-	name,
-	widget: "number",
-	required,
-	value_type: 'int',
-})
-
-export const dateField = (
-	label = "Date",
-	name = "date",
-	required = true
-) => ({
-	label,
-	name,
-	widget: "datetime",
-	required,
-	format: "YYYY-MM-DD",
-	time_format: false,
-})
-
-export const dateTimeField = (
-  label = "DateTime",
-  name = "datetime",
-  required = true
-) => ({
-  label,
-  name,
-  widget: "datetime",
-  required,
-	format: "YYYY-MM-DDTHH:mm:ssZZ",
-	time_format: true,
-})
+export const intField = _makeField('number', {value_type: 'int'});
+export const dateField = _makeField('datetime', {format: "YYYY-MM-DD", time_format: false});
+export const dateTimeField = _makeField('datetime', {format: "YYYY-MM-DDTHH:mm:ssZZ", time_format: true});
 
 export const multiselectField = (
   label = "Options",
