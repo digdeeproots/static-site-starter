@@ -2,26 +2,17 @@ const _capitalize = (word) => (word.charAt(0).toUpperCase + word.substr(1));
 
 const _makeField = (widget_name) => (
 	(label = _capitalize(widget_name), name = widget_name, required = true) => ({
-	label,
-	name,
-	widget: widget_name,
-	required,
-})
+		label,
+		name,
+		widget: widget_name,
+		required,
+	})
 );
+
 export const textField = _makeField('text');
 export const markdownField = _makeField('markdown');
 export const imageField = _makeField('image');
-
-export const stringField = (
-	label = "String",
-	name = "string",
-	required = true
-) => ({
-	label,
-	name,
-	widget: "string",
-	required,
-})
+export const stringField = _makeField('string');
 
 export const intField = (
 	label = "String",
