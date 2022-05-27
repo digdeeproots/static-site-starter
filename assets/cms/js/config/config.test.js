@@ -175,7 +175,7 @@ describe('configuring CMS collections', () => {
 					'Intentional Learning',
 					'Legacy Newsletter',
 				]),
-				simpleListField(imageField, 'Images', 'images', false),
+				simpleListField('Images', 'images', imageField, false),
 				objectListField("Image resource info", 'resources', [
 					stringField("file name pattern to match", 'src', true),
 					stringField("Title", 'title', false),

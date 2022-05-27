@@ -59,9 +59,9 @@ export const objectListField = (
 })
 
 export const simpleListField = (
-	item_widget = stringField,
   label = "List",
   name = "list",
+	item_widget = stringField,
   required = true
 ) => ({
   label,
