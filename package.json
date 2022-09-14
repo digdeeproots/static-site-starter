@@ -47,7 +47,7 @@
 		"autoprefixer": "^10.4.0",
 		"date-fns": "^2.28.0",
 		"exec-bin": "^1.0.0",
-		"hugo-installer": "^3.1.0",
+		"hugo-installer": "^4.0.0",
 		"jest": "^28.1.0",
 		"markdownlint-cli2": "^0.4.0",
 		"netlify-cms-app": "^2.15.72",
