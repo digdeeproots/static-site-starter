@@ -57,7 +57,7 @@
 		"postcss": "^8.3.7",
 		"postcss-cli": "^9.0.2",
 		"postcss-nested": "^5.0.6",
-		"postcss-preset-env": "^7.6.0",
+		"postcss-preset-env": "^8.0.1",
 		"shx": "^0.3.4",
 		"slugify": "^1.6.5",
 		"stylelint": "^14.8.2",
